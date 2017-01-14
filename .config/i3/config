@@ -40,7 +40,7 @@ set $W4 "4: "
 workspace $W4 output DVI-0
 workspace 1 output DVI-0
 workspace 2 output DVI-1
-workspace 3 output Displayport-1 
+workspace 3 output DisplayPort-1 
 
 ##################################################################
 # Program configs
@@ -60,6 +60,12 @@ for_window [class="Terminator"] border pixel
 for_window [title="Terminator Preferences"] floating enable
 # URxvt
 for_window [class="URxvt"] border pixel
+# Discord
+for_window [class="discord"] border pixel
+assign [class="discord"] 3
+# Spotify
+for_window [class="spotify"] border pixel
+assign [class="spotify"] 2
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -157,6 +163,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# suspend
+bindsym $mod+Ctrl+l exec systemctl suspend
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -198,3 +206,6 @@ bar {
 ##################################################################
 exec --no-startup-id compton &
 exec --no-startup-id feh --bg-tile /home/daniel/Backgrounds/background.jpg
+exec --no-startup-id discord-canary &
+exec --no-startup-id google-chrome-stable &
+exec --no-startup-id spotify &
